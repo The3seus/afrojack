@@ -1,0 +1,31 @@
+{
+  "name": "afrojack",
+  "version": "1.0.0",
+  "description": "A unique, minimal React state management library with middleware and AI integration.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist --copy-files",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "react",
+    "state-management",
+    "global-state",
+    "store",
+    "middleware",
+    "afrojack"
+  ],
+  "author": "Sam Paniagua <theeseus@protonmail.com> (https://theeseus.dev)",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.27.0",
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  }
+}
