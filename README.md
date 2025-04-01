@@ -198,4 +198,3 @@ Pull requests and suggestions welcome! Open an issue or shoot me an email at [th
 > AfroJack — Modern State. Made Simple.
 ```
 
----
