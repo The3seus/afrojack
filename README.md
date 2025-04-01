@@ -1,3 +1,4 @@
+
 # 🧠 AfroJack
 
 **AfroJack** is a fast, simple, and powerful React state management library written from scratch. No Redux, no external dependencies — just clean, minimal code built for modern React apps.
@@ -14,7 +15,7 @@ Created with ❤️ by [Sam Paniagua](https://theeseus.dev) — reach me at [the
 - 🧠 **Smart Selectors** — prevent re-renders using shallow equality.
 - 🔁 **Optional Actions** — action-based state updates for bigger apps.
 - 🔬 **DevTools Friendly** — optional integration with Redux DevTools for debugging.
-- 🧬 **AI-Ready** — extendable agent architecture for AI state and async task management.
+- 🤖 **AI-Ready Agents** — built-in agent middleware for async/AI task handling (OpenAI, workers, bots).
 
 ---
 
@@ -32,14 +33,27 @@ npm install afrojack
 
 ```js
 // store.js
-import { createStore, applyMiddleware, loggerMiddleware, errorMiddleware } from 'afrojack';
+import {
+  createStore,
+  applyMiddleware,
+  loggerMiddleware,
+  errorMiddleware,
+  agentMiddleware,
+} from 'afrojack';
 
-const middlewares = applyMiddleware(loggerMiddleware, errorMiddleware);
+const middlewares = applyMiddleware(
+  loggerMiddleware,
+  errorMiddleware,
+  agentMiddleware
+);
 
 export const store = createStore(
   {
     user: null,
     theme: 'dark',
+    loading: false,
+    data: null,
+    error: null,
   },
   middlewares
 );
@@ -50,7 +64,6 @@ export const store = createStore(
 ### 2. Use in a React Component
 
 ```jsx
-// App.jsx
 import React, { useRef } from 'react';
 import { store } from './store';
 import { useAfroJackSelector, useAfroJackDispatch } from 'afrojack';
@@ -105,6 +118,42 @@ export const errorMiddleware = () => next => update => {
 
 ---
 
+## 🤖 AI Agent Middleware (Built-in)
+
+AfroJack supports **async agents** for tasks like fetching from AI APIs (e.g. OpenAI, LangChain) or performing side-effect-based work.
+
+### Register an Agent
+
+```js
+store.setState({
+  type: 'REGISTER_AGENT',
+  payload: {
+    name: 'fetchUserProfile',
+    handler: async ({ getState }) => {
+      const res = await fetch('https://jsonplaceholder.typicode.com/users/1');
+      return await res.json();
+    }
+  }
+});
+```
+
+### Trigger the Agent
+
+```js
+store.setState({
+  type: 'AGENT_TRIGGER',
+  payload: {
+    name: 'fetchUserProfile',
+    onSuccess: (result) => ({ user: result, loading: false }),
+    onError: (error) => ({ error: error.message, loading: false }),
+  }
+});
+```
+
+This pattern lets you **fire async operations declaratively** and apply their results straight into your state — ideal for integrating OpenAI, AI assistants, background workers, etc.
+
+---
+
 ## 🧪 Selector Example
 
 ```js
@@ -125,12 +174,6 @@ dispatch({ type: 'TOGGLE_THEME' });
 ```
 
 Your app stays clean and logic remains reusable.
-
----
-
-## 🤖 Built-In AI Agent Integration (Optional)
-
-Use `AGENT_TRIGGER` and `REGISTER_AGENT` actions to dynamically manage state and async operations like calling AI APIs, workers, or bots.
 
 ---
 
@@ -169,17 +212,16 @@ export const store = createStore(initialState, [
 ## 🛠 API Summary
 
 ### `createStore(initialState, middlewares?)`
-
-Creates a store with the initial state and optional middlewares.
+Creates a store with initial state and optional middlewares.
 
 ### `setState(update)`
-Updates the store. `update` can be an object or a function.
+Updates the state directly or via updater function.
 
 ### `getState()`
-Returns the current state.
+Retrieves the current state.
 
 ### `subscribe(callback)`
-Listens for state changes.
+Subscribes to changes and returns an unsubscribe function.
 
 ---
 
@@ -191,10 +233,8 @@ MIT © [Sam Paniagua](https://theeseus.dev)
 
 ## 🙌 Contributing
 
-Pull requests and suggestions welcome! Open an issue or shoot me an email at [theeseus@protonmail.com](mailto:theeseus@protonmail.com).
+Pull requests and suggestions welcome! Open an issue or shoot me an email at [theeseus@protonmail.com](mailto:theeseus@protonmail.com)
 
 ---
 
 > AfroJack — Modern State. Made Simple.
-
-
