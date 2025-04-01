@@ -1,4 +1,8 @@
 
+<p align="center">
+  <img src="logo_full.png" alt="AfroJack Logo" width="200"/>
+</p>
+
 # 🧠 AfroJack
 
 **AfroJack** is a fast, simple, and powerful React state management library written from scratch. No Redux, no external dependencies — just clean, minimal code built for modern React apps.
