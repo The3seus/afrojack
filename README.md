@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="logo_full.png" alt="AfroJack Logo" width="200"/>
+  <img src="logo.png" alt="AfroJack Logo" width="200"/>
 </p>
 
 # 🧠 AfroJack
