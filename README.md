@@ -1,5 +1,3 @@
-Absolutely! Below is the full `README.md` file customized for **AfroJack**, with your name, email, and website included:
-
 # 🧠 AfroJack
 
 **AfroJack** is a fast, simple, and powerful React state management library written from scratch. No Redux, no external dependencies — just clean, minimal code built for modern React apps.
