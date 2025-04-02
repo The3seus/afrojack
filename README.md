@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="logo.png" alt="AfroJack Logo" width="200"/>
+  <img src="https://firebasestorage.googleapis.com/v0/b/hive-labs-b2094.firebasestorage.app/o/afro-jack.png?alt=media&token=bdedd271-2e4a-4337-9018-277370e183a8" alt="AfroJack Logo" width="200"/>
 </p>
 
 # 🧠 AfroJack
