@@ -3,6 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "agentMiddleware", {
+  enumerable: true,
+  get: function get() {
+    return _agentMiddleware.agentMiddleware;
+  }
+});
 Object.defineProperty(exports, "applyMiddleware", {
   enumerable: true,
   get: function get() {
@@ -45,3 +51,4 @@ var _useAfroJackSelector = require("./hooks/useAfroJackSelector");
 var _useAfroJackDispatch = require("./hooks/useAfroJackDispatch");
 var _loggerMiddleware = require("./middleware/loggerMiddleware");
 var _errorMiddleware = require("./middleware/errorMiddleware");
+var _agentMiddleware = require("./middleware/agentMiddleware");
