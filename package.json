@@ -18,6 +18,14 @@
   ],
   "author": "Sam Paniagua <theeseus@protonmail.com> (https://theeseus.dev)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theeseus/afrojack"
+  },
+  "bugs": {
+    "url": "https://github.com/theeseus/afrojack/issues"
+  },
+  "homepage": "https://github.com/theeseus/afrojack#readme",
   "devDependencies": {
     "@babel/cli": "^7.27.0",
     "@babel/core": "^7.26.10",
