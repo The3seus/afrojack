@@ -19,7 +19,6 @@ Created with ❤️ by [Sam Paniagua](https://theeseus.dev) — reach me at [the
 - 🧠 **Smart Selectors** — prevent re-renders using shallow equality.
 - 🔁 **Optional Actions** — action-based state updates for bigger apps.
 - 🔬 **DevTools Friendly** — optional integration with Redux DevTools for debugging.
-- 🤖 **AI-Ready Agents** — built-in agent middleware for async/AI task handling (OpenAI, workers, bots).
 
 ---
 
@@ -41,14 +40,12 @@ import {
   createStore,
   applyMiddleware,
   loggerMiddleware,
-  errorMiddleware,
-  agentMiddleware,
+  errorMiddleware
 } from 'afrojack';
 
 const middlewares = applyMiddleware(
   loggerMiddleware,
-  errorMiddleware,
-  agentMiddleware
+  errorMiddleware
 );
 
 export const store = createStore(
@@ -122,41 +119,6 @@ export const errorMiddleware = () => next => update => {
 
 ---
 
-## 🤖 AI Agent Middleware (Built-in)
-
-AfroJack supports **async agents** for tasks like fetching from AI APIs (e.g. OpenAI, LangChain) or performing side-effect-based work.
-
-### Register an Agent
-
-```js
-store.setState({
-  type: 'REGISTER_AGENT',
-  payload: {
-    name: 'fetchUserProfile',
-    handler: async ({ getState }) => {
-      const res = await fetch('https://jsonplaceholder.typicode.com/users/1');
-      return await res.json();
-    }
-  }
-});
-```
-
-### Trigger the Agent
-
-```js
-store.setState({
-  type: 'AGENT_TRIGGER',
-  payload: {
-    name: 'fetchUserProfile',
-    onSuccess: (result) => ({ user: result, loading: false }),
-    onError: (error) => ({ error: error.message, loading: false }),
-  }
-});
-```
-
-This pattern lets you **fire async operations declaratively** and apply their results straight into your state — ideal for integrating OpenAI, AI assistants, background workers, etc.
-
----
 
 ## 🧪 Selector Example
 

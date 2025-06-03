@@ -9,4 +9,3 @@ export { useAfroJackDispatch } from './hooks/useAfroJackDispatch';
 // Middlewares
 export { loggerMiddleware } from './middleware/loggerMiddleware';
 export { errorMiddleware } from './middleware/errorMiddleware';
-export { agentMiddleware } from './middleware/agentMiddleware'; // 🧠 NEW
